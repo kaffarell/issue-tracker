@@ -1,2 +1,9 @@
 # Issue Tracker
 Issue Tracker created with the Electron framework
+To-Do:
+ - []Kanban-Board
+ - []Open Issues in Popup-Window
+ - []Tags on Issues (Language, Version)
+ - []Cards with Worktime (start, end)
+ - []Roadmaps for issues (To show the time each card is worked on)
+ - []Version Release Tracker
