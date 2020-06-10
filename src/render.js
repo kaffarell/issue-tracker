@@ -28,6 +28,12 @@ sortable('.sortable-list2', {
 });
 
 
+// Create Modal when user clicks on Issue
+function openModal(element){
+    
+}
+
+
 function createAddWindow() {
     ipcRenderer.send('addWindow', 'create');
 }
