@@ -11,23 +11,38 @@
   </head>
   <body>
     <!--Modal that opens from above when user clicks on issue-->
-    <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-      </div>
     
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+
+
 
     <h1>Issue Tracker</h1>
     <div class="control">
       <!-- To-do List -->
       <div class="list">
         <ul class="sortable-list" id="mainList">
-          <li onclick="openModal(this)">
-            <h3>Add bootstrap</h3>
+          <li>
+            <h3 onclick="openModal(this)">Add bootstrap</h3>
             <p>from cdn</p>
             <div class="custom-control custom-checkbox">
               <!--change name of id(Checkbox) and for(label) for individual boxes-->
@@ -35,16 +50,16 @@
               <label class="custom-control-label" for="defaultUnchecked">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
               <label class="custom-control-label" for="defaultUnchecked1">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
@@ -56,8 +71,8 @@
       <!-- Doing List -->
       <div class="list1">
         <ul class="sortable-list1" id="mainList1">
-          <li onclick="openModal(this)">
-            <h3>Add bootstrap</h3>
+          <li>
+            <h3 onclick="openModal(this)">Add bootstrap</h3>
             <p>from cdn</p>
             <div class="custom-control custom-checkbox">
               <!--change name of id(Checkbox) and for(label) for individual boxes-->
@@ -65,16 +80,16 @@
               <label class="custom-control-label" for="defaultUnchecked3">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
               <label class="custom-control-label" for="defaultUnchecked4">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
@@ -87,8 +102,8 @@
       <!-- Done List -->
       <div class="list2">
         <ul class="sortable-list2" id="mainList2">
-          <li onclick="openModal(this)">
-            <h3>Add bootstrap</h3>
+          <li>
+            <h3 onclick="openModal(this)">Add bootstrap</h3>
             <p>from cdn</p>
             <div class="custom-control custom-checkbox">
               <!--change name of id(Checkbox) and for(label) for individual boxes-->
@@ -96,16 +111,16 @@
               <label class="custom-control-label" for="defaultUnchecked6">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
               <label class="custom-control-label" for="defaultUnchecked7">Select</label>
             </div>
           </li>
-          <li onclick="openModal(this)">
-            <h3>Issue</h3>
+          <li>
+            <h3 onclick="openModal(this)">Issue</h3>
             <p>Description</p>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">

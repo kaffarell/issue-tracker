@@ -28,9 +28,9 @@ sortable('.sortable-list2', {
 });
 
 
-// Create Modal when user clicks on Issue
 function openModal(element){
-    
+    // Open modal
+    document.getElementsByClassName('modal').style.display = 'block';
 }
 
 
@@ -81,6 +81,7 @@ function addToList(title, description){
     let ul = document.getElementById('mainList');
     let li = document.createElement('li');
     let h3 = document.createElement('h3');
+    h3.setAttribute('onclick', 'openModal(this)')
     h3.innerText = title;
     let p = document.createElement('p');
     p.innerText = description;
