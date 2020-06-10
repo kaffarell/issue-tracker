@@ -4,9 +4,34 @@
 }
 
 .list {
-  width: 700px;
-  height: 100%;
-  margin-right: 400px;
+  width: 400px;
+  height: 1000px;
+  margin-right: 20px;
+}
+
+.list1 {
+  width: 400px;
+  height: 1000px;
+  margin-right: 20px;
+}
+
+.list2 {
+  width: 400px;
+  height: 1000px;
+  margin-right: 20px;
+}
+
+.list ul {
+  height: 1000px;
+  width: 400px;
+}
+.list1 ul {
+  height: 1000px;
+  width: 400px;
+}
+.list2 ul {
+  height: 1000px;
+  width: 400px;
 }
 
 ul {

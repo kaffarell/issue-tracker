@@ -6,42 +6,42 @@ function closeAddWindow() {
 
 function sendData() {
     // class is-invalid
-    // id orderHelp and nameHelp remove display:none
-    let inputName = document.getElementById('inputName');
-    let inputOrder = document.getElementById('inputOrder');
-    let inputNameCheck = false;
-    let inputOrderCheck = false;
+    // id descriptionHelp and titleHelp remove display:none
+    let inputTitle = document.getElementById('inputTitle');
+    let inputDescription = document.getElementById('inputDescription');
+    let inputTitleCheck = false;
+    let inputDescriptionCheck = false;
 
     // Reset Helper Text and valid and invalid flags
-    inputName.classList.remove('is-invalid');
-    inputName.classList.remove('is-valid');
-    document.getElementById('nameHelp').setAttribute('string', 'display: none;');
-    inputOrder.classList.remove('is-invalid');
-    inputOrder.classList.remove('is-valid');
-    document.getElementById('orderHelp').setAttribute('string', 'display: none;');
+    inputTitle.classList.remove('is-invalid');
+    inputTitle.classList.remove('is-valid');
+    document.getElementById('titleHelp').setAttribute('string', 'display: none;');
+    inputDescription.classList.remove('is-invalid');
+    inputDescription.classList.remove('is-valid');
+    document.getElementById('descriptionHelp').setAttribute('string', 'display: none;');
 
 
-
-    if(inputName.value === ''){
-        inputName.classList.add('is-invalid');
-        document.getElementById('nameHelp').removeAttribute('style');
-        inputNameCheck = false;
+    // Check if boxes are empty
+    if(inputTitle.value === ''){
+        inputTitle.classList.add('is-invalid');
+        document.getElementById('titleHelp').removeAttribute('style');
+        inputTitleCheck = false;
     }else{
-        inputName.classList.add('is-valid');
-        inputNameCheck = true;
+        inputTitle.classList.add('is-valid');
+        inputTitleCheck = true;
     }
 
-    if(inputOrder.value === ''){
-        inputOrder.classList.add('is-invalid');
-        document.getElementById('orderHelp').removeAttribute('style');
-        inputOrderCheck = false;
+    if(inputDescription.value === ''){
+        inputDescription.classList.add('is-invalid');
+        document.getElementById('descriptionHelp').removeAttribute('style');
+        inputDescriptionCheck = false;
     }else{
-        inputName.classList.add('is-valid');
-        inputOrderCheck = true;
+        inputDescription.classList.add('is-valid');
+        inputDescriptionCheck = true;
     }
 
-    if(inputNameCheck && inputOrderCheck){
-        ipcRenderer.send('addWindowInfo', `${inputName.value}:${inputOrder.value}`);
+    if(inputTitleCheck && inputDescriptionCheck){
+        ipcRenderer.send('addWindowInfo', `${inputTitle.value}:${inputDescription.value}`);
         closeAddWindow();
     }
 }

@@ -60,7 +60,7 @@ ipcMain.on('addWindow', (event, args) => {
         addWindow = new BrowserWindow({
             width: 500,
             height: 400,
-            title: 'Add Order',
+            title: 'Add Card',
             webPreferences: {
                 nodeIntegration: true,
             },

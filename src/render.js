@@ -1,36 +1,65 @@
 const { ipcRenderer } = require('electron');
 
+// Counter for the cards, so that we can have unique index for checkboxes
+// trough all lists
+// Is now set at the number of initial example cards
+var amountCards = 9;
+
+// Make the Kanban-Board lists sortable (enable drag and drop)
 sortable('.sortable-list', {
+    acceptFrom: '.sortable-list1, .sortable-list2',
     forcePlaceholderSize: true,
     placeholderClass: 'ph-class fade',
     hoverClass: 'bg-maroon yellow'
 });
 
+sortable('.sortable-list1', {
+    acceptFrom: '.sortable-list, .sortable-list2',
+    forcePlaceholderSize: true,
+    placeholderClass: 'ph-class fade',
+    hoverClass: 'bg-maroon yellow'
+});
+
+sortable('.sortable-list2', {
+    acceptFrom: '.sortable-list, .sortable-list1',
+    forcePlaceholderSize: true,
+    placeholderClass: 'ph-class fade',
+    hoverClass: 'bg-maroon yellow'
+});
+
+
 function createAddWindow() {
     ipcRenderer.send('addWindow', 'create');
 }
 
-function clearFirst() {
-    // Remove first element
-    let ul = document.getElementById('mainList');
-    let firstElem = ul.getElementsByTagName('li')[0];
-    firstElem.parentNode.removeChild(firstElem);
-}
 
 function removeSelectedElements() {
     // Remove all selected Elements
-    let ul = document.getElementById('mainList');
-    let listCheckboxes = ul.getElementsByTagName('input');
-    for(let i = 0; i < listCheckboxes.length+1; i++){
-        // If Element is selected remove
-        if(listCheckboxes[i].checked === true){
-            // Move back to main li with parentNode
-            listCheckboxes[i].parentNode.parentNode.parentNode.removeChild(listCheckboxes[i].parentNode.parentNode);
+    // Go trough all lists
+    let kanbanCharts = ['mainList', 'mainList1', 'mainList2'];
+    for(let a = 0; a < kanbanCharts.length; a++){
+        let ul = document.getElementById(kanbanCharts[a]);
+        // List with html-objects of checkboxes
+        let listCheckboxesCache = ul.getElementsByTagName('input');
+        // List with ids of checkboxes
+        let listCheckboxes = [];
+        for(let i = 0; i < listCheckboxesCache.length; i++){
+            listCheckboxes.push(listCheckboxesCache[i].id);
+        }
+
+        for(let i = 0; i < listCheckboxes.length; i++){
+            // If Element is selected remove
+           
+            if(document.getElementById(listCheckboxes[i]).checked === true){
+                // Move back to main li with parentNode
+                document.getElementById(listCheckboxes[i]).parentNode.parentNode.parentNode.removeChild(document.getElementById(listCheckboxes[i]).parentNode.parentNode);
+            }
         }
     }
+    
 }
 
-function addToList(name, order){
+function addToList(title, description){
     // Create this element:
     /*
     <li>
@@ -46,19 +75,19 @@ function addToList(name, order){
     let ul = document.getElementById('mainList');
     let li = document.createElement('li');
     let h3 = document.createElement('h3');
-    h3.innerText = name;
+    h3.innerText = title;
     let p = document.createElement('p');
-    p.innerText = order;
+    p.innerText = description;
     let div = document.createElement('div');
     div.classList.add('custom-control');
     div.classList.add('custom-checkbox');
     let input = document.createElement('input');
     input.type = 'checkbox';
     input.classList.add('custom-control-input');
-    input.id = `defaultUnchecked${ul.getElementsByTagName("li").length + 1}`;
+    input.id = `defaultUnchecked${amountCards}`;
     let label = document.createElement('label');
     label.classList.add('custom-control-label');
-    label.setAttribute('for', `defaultUnchecked${ul.getElementsByTagName("li").length + 1}`);
+    label.setAttribute('for', `defaultUnchecked${amountCards}`);
     label.innerText = 'Select';
 
     ul.appendChild(li);
@@ -74,13 +103,15 @@ function addToList(name, order){
         placeholderClass: 'ph-class fade',
         hoverClass: 'bg-maroon yellow'
     });
+
+    amountCards++;
 }
 
 
 ipcRenderer.on("addWindowInfoMain", (event, args) => {
-    // Get Name and Order out of string
+    // Get Title and Description out of string
     args = args.split(":", 2);
-    let name = args[0];
-    let order = args[1];
-    addToList(name, order);
+    let title = args[0];
+    let description = args[1];
+    addToList(title, description);
 });
