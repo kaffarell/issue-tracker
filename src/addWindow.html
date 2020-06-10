@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./addWindow.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="./renderAddWindow.js"></script>
+</head>
+<body>
+    <form>
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputName" placeholder="Name">
+          </div>
+          <div class="col-sm-4">
+            <small id="nameHelp" class="text-danger" style="display: none;">
+              Must not be empty!
+            </small>      
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="inputOrder" class="col-sm-2 col-form-label">Order</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputOrder" placeholder="Order">
+          </div>
+          <div class="col-sm-4">
+            <small id="orderHelp" class="text-danger" style="display: none;">
+              Must not be empty!
+            </small>      
+          </div>
+        </div>
+    </form>
+    <br>
+    <button id="submit" class="btn btn-primary" onclick="sendData()">Submit</button>
+    <button id="cancel" class="btn btn-primary" onclick="closeAddWindow()">Cancel</button>
+</body>
+</html>

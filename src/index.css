@@ -1,0 +1,30 @@
+.control {
+  margin-top: 100px;
+  display: flex;
+}
+
+.list {
+  width: 700px;
+  height: 100%;
+  margin-right: 400px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-top: 10px;
+  border-radius: 4px;
+  background-color: lightcoral;
+  padding: 5px 30px 5px 10px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+#buttons {
+  height: 100%;
+  width: 50%;
+}
