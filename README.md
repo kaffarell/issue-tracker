@@ -1,2 +1,2 @@
-# issue-tracker
-Issue Tracker in electron
+# Issue Tracker
+Issue Tracker created with the Electron framework
