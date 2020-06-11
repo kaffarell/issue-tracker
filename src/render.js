@@ -30,7 +30,27 @@ sortable('.sortable-list2', {
 
 function openModal(element){
     // Open modal
-    document.getElementsByClassName('modal').style.display = 'block';
+    $("#modal").modal();
+    // Make paragraph a input box on click
+    $('body').on('click', '[data-editable]', function(){
+  
+        var $el = $(this);
+                    
+        var $input = $('<input/>').val( $el.text() );
+        $el.replaceWith( $input );
+        
+        var save = function(){
+          var $p = $('<p data-editable />').text( $input.val() );
+          $input.replaceWith( $p );
+        };
+        $input.one('blur', save).focus();
+        
+    });
+    let li = element.parentNode;
+    let title = $('#' + li.id + ' h3').text();
+    let description = $('#' + li.id + ' p').text();
+    $('.modal-title').text(title);
+    $('.modal-body p').text(description);
 }
 
 
@@ -80,6 +100,7 @@ function addToList(title, description){
     */
     let ul = document.getElementById('mainList');
     let li = document.createElement('li');
+    li.setAttribute('id', `issue${amountCards}`)
     let h3 = document.createElement('h3');
     h3.setAttribute('onclick', 'openModal(this)')
     h3.innerText = title;
