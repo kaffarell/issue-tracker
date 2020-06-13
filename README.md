@@ -9,6 +9,7 @@ application execute `npm start`.
 ## To-Do:
 - [x] Kanban-Board
 - [x] Open Issues in Popup-Window
+- [ ] Store Issues in local Database
 - [ ] Tags on Issues (Language, Version)
 - [ ] Cards with Worktime (start, end)
 - [ ] Roadmaps for issues (To show the time each card is worked on)
