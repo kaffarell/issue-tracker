@@ -54,9 +54,9 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 // Initialize database
-//connectToDatabase();
+connectToDatabase();
 // Print everything
-//outputEverything();
+outputEverything();
 
 
 let addWindow;
