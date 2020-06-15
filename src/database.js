@@ -1,34 +1,26 @@
-const sqlite = require('sqlite3');
-const db = new sqlite.Database('./issues.db');
+var fs = require('fs');
+var initSqlJs = require('sql-wasm.js');
+var filebuffer = fs.readFileSync('issues.db');
+const sqlite = require('sql.js');
+var db;
+	
 
-function getAll() {
-	return new Promise((resolve, reject) => {
-		const query = 'SELECT * FROM Issues';
-		db.all(query, (error, results) => {
-			if(error){
-				reject(error);
-			}else{
-				resolve(results);
-			}
-		});
-	});
+function connectToDatabase(){
+	const SQL = await initSqlJs({
+		locateFile: file => 
+	})
 }
 
-
-function insert(id, title, description){
-	return new Promise((resolve, reject) => {
-		const query = 'INSERT INTO Issues (idclass, title, description) VALUES (?, ?)';
-		db.run(query, [id, title, description], (error, results) => {
-			if(error) {
-				reject(error);
-			}else {
-				resolve(results);
-			}
-		});
+function outputEverything(){
+	db.all('SELECT * FROM Issues',[], (err, rows) => {
+		if(err)	{
+			console.log(err);
+		}
+		console.log(rows)
 	});
 }
 
 module.exports = {
-	getAll,
-	insert(id, title, description),
+	connectToDatabase,
+	outputEverything,
 }
