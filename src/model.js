@@ -6,12 +6,16 @@
 var amountIssues = 0;
 
 class Issue {
-    constructor (title, description, colon) {
+    constructor (id="", title, description, colon) {
         this.title = title;
         this.description = description;
-        this.id = 'issue' + amountIssues;
         this.colon = colon;
-        amountIssues++;
+		if(id === ""){
+			this.id = 'issue' + amountIssues;
+        	amountIssues++;
+		}else{
+			this,.id = id;
+		}	
     }
 };
 
@@ -45,4 +49,4 @@ function removeIssue(id) {
     }
 }
 
-module.exports = {allIssues, addIssue, removeIssue, editIssue};
+module.exports = {allIssues, addIssue, removeIssue, editIssue, Issue};
