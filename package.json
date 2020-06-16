@@ -48,7 +48,7 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "html5sortable": "^0.9.17",
-    "sql.js": "^1.3.0"
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.50",

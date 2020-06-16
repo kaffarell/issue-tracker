@@ -1,35 +1,33 @@
-var fs = require('fs');
-const initSqlJs = require('sql.js');
+"use strict";
+
+var sqlite3 = require('sqlite3').verbose();
 var db;
 
-
-function connectToDatabase(){
-	console.log("Executing connect!");
-	// Load wasm binary
-	//const SQL = initSqlJs();
-	const SQL = initSqlJs({
-  		// Required to load the wasm binary asynchronously. Of course, you can host it wherever you want
-  		// You can omit locateFile completely when running in node
-  		locateFile: `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.3.0/dist/sql-wasm.js`,
-	});
-
-	db = new SQL.Database();
-	sqlstr = "CREATE TABLE issues (id TEXT, title TEXT, description TEXT, colon INT);";
-	sqlstr += "INSERT INTO issues VALUES ('issue1', 'Add Boostrap', 'projectX', 0);";
-	db.run(sqlstr);
-
-	console.log("Stopped connect!");
+function connectToDB() {
+	console.log("Connect to database.. ");
+    db = new sqlite3.Database('issues.db');
+	readAllRows();
 }
 
-function outputEverything(){
-	console.log("output started!");
-	let res = db.exec("SELECT * FROM issues");
-	console.log(res);
-	console.log("output stopped");
-	
+function readAllRows() {
+    console.log("readAllRows Issues");
+
+
+    db.all("SELECT * FROM Issues", function(err, rows) {
+        rows.forEach(function (row) {
+			console.log(row.id + ": " + row.title, " : " + row.description);
+        });
+    });
+	closeDb();
+}
+
+function closeDb() {
+    console.log("closeDb");
+    db.close();
 }
 
 module.exports = {
-	connectToDatabase,
-	outputEverything,
-}
+	connectToDB,
+	readAllRows,
+	closeDb,
+};

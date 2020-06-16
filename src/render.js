@@ -1,6 +1,8 @@
 const { ipcRenderer } = require('electron');
 var { allIssues, addIssue, removeIssue, editIssue} = require('./model');
 
+
+
 // Make the Kanban-Board lists sortable (enable drag and drop)
 sortable('.sortable-list', {
     acceptFrom: '.sortable-list1, .sortable-list2',
