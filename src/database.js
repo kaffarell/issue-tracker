@@ -9,7 +9,7 @@ function connectToDB() {
 }
 
 
-function saveDB(issues){
+function saveToDB(issues){
 	for(let i = 0; i < issues; i++){
 		const query = 'INSERT INTO Issues (id, title, description, colon) VALUES (?, ?, ?, ?)';
 		db.run(query, [issues[i].id, issues[i].title, issues[i].description, issues[i].colon], (err, result) => {
@@ -29,7 +29,7 @@ function outputAll() {
     });
 }
 
-function loadDB(){
+function loadFromDB(){
 	let array = [];
 	db.all("SELECT * FROM Issues", (err, rows) => {
 		rows.forEach((row) => {
@@ -46,6 +46,8 @@ function closeDb() {
 
 module.exports = {
 	connectToDB,
-	readAllRows,
+	saveToDB,
+	outputAll,
+	loadFromDB,
 	closeDb,
 };

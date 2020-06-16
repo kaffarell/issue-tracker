@@ -14,7 +14,7 @@ class Issue {
 			this.id = 'issue' + amountIssues;
         	amountIssues++;
 		}else{
-			this,.id = id;
+			this.id = id;
 		}	
     }
 };
