@@ -6,6 +6,7 @@ var db;
 
 function connectToDB() {
     db = new sqlite3.Database('issues.db');
+	console.log('Opened Database!');
 }
 
 
@@ -22,7 +23,7 @@ function saveToDB(issues){
 }
 
 function outputAll() {
-    db.all("SELECT * FROM Issues", function(err, rows) {
+	db.all("SELECT * FROM Issues", (err, rows) => {
         rows.forEach(function (row) {
 			console.log(row.id + ": " + row.title, " : " + row.description + " : " + row.colon);
         });
@@ -37,6 +38,17 @@ function loadFromDB(){
 			array.push(newIssue);
 		});
 	});
+	return array;
+}
+
+function removeIssueFromDB(issue) {
+	let query = "DELETE FROM Issues WHERE id = ?";
+	db.run(query, [issue.id], (err, result) => {
+		if(err){
+			console.log("🤕: " + err);
+		}
+		console.log(result);
+	});
 }
 
 
@@ -49,5 +61,6 @@ module.exports = {
 	saveToDB,
 	outputAll,
 	loadFromDB,
+	removeIssueFromDB,
 	closeDb,
 };

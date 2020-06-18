@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-var {connectToDB} = require('./database.js');
+var {connectToDB, loadFromDB} = require('./database.js');
+var {allIssues} = require('./model.js')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-line global-require
@@ -26,6 +27,7 @@ const createWindow = () => {
 
     // Open the DevTools automatically on startup
     //mainWindow.webContents.openDevTools();
+	loadDB();
 };
 
 // This method will be called when Electron has finished
@@ -52,11 +54,11 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-
-connectToDB();
-
-
-
+function loadDB(){
+	connectToDB();
+	allIssues = loadFromDB();
+	console.log('All Issues loaded from db: ' + allIssues);
+}
 let addWindow;
 
 ipcMain.on('addWindow', (event, args) => {

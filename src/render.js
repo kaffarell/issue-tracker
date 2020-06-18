@@ -2,6 +2,9 @@ const { ipcRenderer } = require('electron');
 var { allIssues, addIssue, removeIssue, editIssue} = require('./model');
 
 
+for(let i = 0; i < allIssues.length; i++){
+	addToList(allIssues[i].title, allIssues[i].description, allIssues[i].colon);
+}
 
 // Make the Kanban-Board lists sortable (enable drag and drop)
 sortable('.sortable-list', {
@@ -155,7 +158,7 @@ function removeSelectedElements() {
     
 }
 
-function addToList(title, description){
+function addToList(title, description, colon=0){
     // Create this element:
     /*
     <li>
@@ -169,7 +172,7 @@ function addToList(title, description){
     </li>
     */
 
-    let id = addIssue(title, description, 0);
+    let id = addIssue(title, description, colon);
 
     let ul = document.getElementById('mainList');
     let li = document.createElement('li');

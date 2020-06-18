@@ -1,4 +1,4 @@
-
+var {saveToDB, loadFromDB} = require('./database.js');
 
 // Counter for the cards, so that we can have unique index for checkboxes
 // trough all lists
@@ -25,12 +25,15 @@ var allIssues = [];
 function addIssue(title, description, colon) {
     let new_issue = new Issue(title, description, colon);
     allIssues.push(new_issue);
+	// Save the issue to the DB
+	let temp_array = [];
+	temp_array.push(new_issue);
+	saveToDB(temp_array);
     return new_issue.id;
 }
 
 function editIssue(id, title, description) {
     // Update issue with id with title and description
-	console.log('Function editIssue called' + id);
 	for(let i = 0; i < allIssues.length; i++){
 		if(allIssues[i].id === id){
 			allIssues[i].title = title;
