@@ -33,12 +33,15 @@ function outputAll() {
 function loadFromDB(){
 	let array = [];
 	db.all("SELECT * FROM Issues", (err, rows) => {
-		rows.forEach((row) => {
-			let newIssue = new Issue(row.id, row.title, row.description, row.colon);
+		if(err){
+			console.log("🤕: " + err);
+		}
+		for(let i = 0; i < rows.length; i++){
+			let newIssue = new Issue(rows[i].id, rows[i].title, rows[i].description, rows[i].colon);
 			array.push(newIssue);
-		});
+		}
+		return array;
 	});
-	return array;
 }
 
 function removeIssueFromDB(issue) {
