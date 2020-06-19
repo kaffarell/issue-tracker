@@ -6,7 +6,6 @@ var db;
 
 function connectToDB() {
     db = new sqlite3.Database('issues.db');
-	console.log('Opened Database!');
 }
 
 
@@ -30,18 +29,29 @@ function outputAll() {
     });
 }
 
-function loadFromDB(){
-	let array = [];
-	db.all("SELECT * FROM Issues", (err, rows) => {
-		if(err){
-			console.log("🤕: " + err);
-		}
-		for(let i = 0; i < rows.length; i++){
-			let newIssue = new Issue(rows[i].id, rows[i].title, rows[i].description, rows[i].colon);
-			array.push(newIssue);
-		}
-		return array;
-	});
+function fetchAll(){
+	return new Promise((resolve, reject) => {
+		let array = [];
+		db.all("SELECT * FROM Issues", (err, rows) => {
+			if(err){
+				console.log("🤕: " + err);
+				reject(err);
+			}
+			for(let i = 0; i < rows.length; i++){
+				let newIssue = new Issue(rows[i].id, rows[i].title, rows[i].description, rows[i].colon);
+				array.push(newIssue);
+			}
+
+			resolve(array);
+		});
+	});	
+}
+
+async function loadFromDB(){
+	let array = await (await fetchAll());
+	console.log("Array: " + array[0].id);
+	console.log(array);
+	return array;
 }
 
 function removeIssueFromDB(issue) {

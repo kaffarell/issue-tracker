@@ -54,11 +54,11 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-function loadDB(){
-	console.log("Connecting to database")
+async function loadDB(){
 	connectToDB();
-	allIssues = loadFromDB();
-	console.log('All Issues loaded from db: ' + allIssues);
+	let array = await loadFromDB();
+	console.log('All Issues loaded from db: ' + array);
+	allIssues = array;
 }
 let addWindow;
 

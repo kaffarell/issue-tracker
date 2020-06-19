@@ -1,7 +1,7 @@
 const { ipcRenderer } = require('electron');
 var { allIssues, addIssue, removeIssue, editIssue} = require('./model');
 
-
+console.log(allIssues);
 for(let i = 0; i < allIssues.length; i++){
 	addToList(allIssues[i].title, allIssues[i].description, allIssues[i].colon);
 }
