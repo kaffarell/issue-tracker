@@ -1,62 +1,52 @@
 {
-  "name": "issue-tracker",
-  "productName": "issue-tracker",
+  "name": "electron-react-boilerplate-minimal",
   "version": "1.0.0",
-  "description": "Issue Tracker",
-  "main": "src/index.js",
-  "scripts": {
-    "postinstall": "install-app-deps",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
-  "author": {
-    "name": "kaffarell",
-    "email": "gabrielgoller123@gmail.com"
-  },
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "reception"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
+  "description": "An Electron, React, and Redux boilerplate for minimalists.",
+  "main": "main.js",
+  "build": {
+    "appId": "electron-react-boilerplate-minimal",
+    "mac": {
+      "category": "demo.app"
     }
   },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "html5sortable": "^0.9.17",
-    "sqlite3": "^4.2.0"
+  "scripts": {
+    "dev": "webpack --watch",
+    "start": "electron .",
+    "build": "webpack && electron-builder"
   },
+  "repository": "https://github.com/f-prime/electron-react-boilerplate-minimal",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "f-prime",
+  "license": "CC0-1.0",
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.50",
-    "@electron-forge/maker-deb": "6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "6.0.0-beta.50",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.50",
-    "@electron-forge/maker-zip": "6.0.0-beta.50",
-    "electron": "8.2.1",
-    "electron-builder": "^22.7.0"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "electron": "^4.0.4",
+    "electron-builder": "^20.39.0",
+    "react-hot-loader": "^4.7.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "16.8.2",
+    "babel-core": "^6.26.3",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-router-dom": "^4.3.1",
+    "reactn": "^1.0.0",
+    "yarn": "^1.17.3"
   }
 }

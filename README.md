@@ -1,16 +1,23 @@
-# Issue Tracker
-Issue Tracker created with the  :electron: Electron framework
+# electron-react-boilerplate-minimal
 
-## How to run
-You have to install npm and nodejs first!
-Navigate to the root folder and execute `npm install` to install all the libraries needed. To run the
-application execute `npm start`.
+An Electron, React (16.8) boilerplate for minimalists. Comes with Webpack, Babel, Electron, reactn and an example app using React Hooks.
 
-## To-Do:
-- [x] Kanban-Board
-- [x] Open Issues in Popup-Window
-- [ ] Store Issues in local Database
-- [ ] Tags on Issues (Language, Version)
-- [ ] Cards with Worktime (start, end)
-- [ ] Roadmaps for issues (To show the time each card is worked on)
-- [ ] Version Release Tracker 
+Uses [electron-quick-start](https://github.com/electron/electron-quick-start) for Electron base. 
+
+Comes with a basic counting app
+
+![](image.png)
+
+# How to run
+
+3 simple commands.
+
+`npm install`
+
+`yarn dev`
+
+`yarn start`
+
+# Building for Production
+
+`yarn build`
